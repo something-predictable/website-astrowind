@@ -22,7 +22,7 @@ export default ({ config: _themeConfig = 'src/config.yaml' } = {}): AstroIntegra
       }) => {
         const buildLogger = logger.fork('astrowind');
 
-        const virtualModuleId = 'astrowind:config';
+        const virtualModuleId = '\0#astrowind:config';
         const resolvedVirtualModuleId = '\0' + virtualModuleId;
 
         const rawJsonConfig = (await loadConfig(_themeConfig)) as Config;

@@ -19,6 +19,10 @@
     "tailwind.config.js",
     "tailwind.config.d.ts"
   ],
+  "types": "vendor/integration/types.d.ts",
+  "imports": {
+    "#astrowind:config": "./vendor/integration/types.d.ts"
+  },
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
