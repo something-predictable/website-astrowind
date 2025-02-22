@@ -3,10 +3,22 @@
   "version": "1.0.0-beta.50",
   "description": "AstroWind: A free template using Astro 5.0 and Tailwind CSS. Astro starter theme.",
   "type": "module",
-  "private": true,
   "engines": {
     "node": "^18.17.1 || ^20.3.0 || >= 21.0.0"
   },
+  "files": [
+    "src/assets/styles/*.css",
+    "src/content/**/*.ts",
+    "src/components/**/*.astro",
+    "src/layouts/**/*.astro",
+    "src/utils/**/*.ts",
+    "src/*.d.ts",
+    "src/pages/rss.xml.ts",
+    "src/content/config.ts",
+    "vendor/integration/**/*.ts",
+    "tailwind.config.js",
+    "tailwind.config.d.ts"
+  ],
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
