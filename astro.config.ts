@@ -11,9 +11,13 @@ import icon from 'astro-icon';
 import compress from 'astro-compress';
 import type { AstroIntegration } from 'astro';
 
-import astrowind from './vendor/integration';
+import astrowind from '@riddance/astrowind';
 
-import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehypePlugin } from './src/utils/frontmatter';
+import {
+  readingTimeRemarkPlugin,
+  responsiveTablesRehypePlugin,
+  lazyImagesRehypePlugin,
+} from '@riddance/astrowind/utils/frontmatter.ts';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -84,7 +88,11 @@ export default defineConfig({
     resolve: {
       alias: {
         '~': path.resolve(__dirname, './src'),
+        '#astrowind:config': '\0#astrowind:config',
       },
+    },
+    ssr: {
+      noExternal: ['@fontsource-variable/inter'],
     },
   },
 });

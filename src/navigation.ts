@@ -1,4 +1,4 @@
-import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
+import { getPermalink, getBlogPermalink, getAsset } from '@riddance/astrowind/utils/permalinks.ts';
 
 export const headerData = {
   links: [

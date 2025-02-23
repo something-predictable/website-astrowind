@@ -1,13 +1,13 @@
 ---
 import type { InferGetStaticPropsType, GetStaticPaths } from 'astro';
 
-import Layout from '~/layouts/PageLayout.astro';
-import BlogList from '~/components/blog/List.astro';
-import Headline from '~/components/blog/Headline.astro';
-import Pagination from '~/components/blog/Pagination.astro';
-// import PostTags from "~/components/blog/Tags.astro";
+import Layout from '@riddance/astrowind/layouts/PageLayout.astro';
+import BlogList from '@riddance/astrowind/components/blog/List.astro';
+import Headline from '@riddance/astrowind/components/blog/Headline.astro';
+import Pagination from '@riddance/astrowind/components/blog/Pagination.astro';
+// import PostTags from "astrowind/src/components/blog/Tags.astro";
 
-import { blogListRobots, getStaticPathsBlogList } from '~/utils/blog';
+import { blogListRobots, getStaticPathsBlogList } from '@riddance/astrowind/utils/blog.ts';
 
 export const prerender = true;
 
