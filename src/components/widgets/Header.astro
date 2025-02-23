@@ -23,6 +23,7 @@ interface MenuLink extends Link {
 export interface Props {
   id?: string;
   links?: Array<MenuLink>;
+  logo?: string;
   actions?: Array<CallToAction>;
   isSticky?: boolean;
   isDark?: boolean;
@@ -35,6 +36,7 @@ export interface Props {
 const {
   id = 'header',
   links = [],
+  logo,
   actions = [],
   isSticky = false,
   isDark = false,
@@ -72,7 +74,9 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
   >
     <div class:list={[{ 'mr-auto rtl:mr-0 rtl:ml-auto': position === 'right' }, 'flex justify-between']}>
       <a class="flex items-center" href={getHomePermalink()}>
-        <Logo />
+        <slot name="logo">
+          <Logo logo={logo} />
+        </slot>
       </a>
       <div class="flex items-center md:hidden">
         <ToggleMenu />

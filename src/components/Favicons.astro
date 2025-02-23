@@ -1,10 +1,9 @@
 ---
-import favIcon from '~/assets/favicons/favicon.ico';
-import favIconSvg from '~/assets/favicons/favicon.svg';
-import appleTouchIcon from '~/assets/favicons/apple-touch-icon.png';
+import { SITE } from '#astrowind:config';
+
+const BASE_PATHNAME = SITE.base || '/';
 ---
 
-<link rel="shortcut icon" href={favIcon} />
-<link rel="icon" type="image/svg+xml" href={favIconSvg.src} />
-<link rel="mask-icon" href={favIconSvg.src} color="#8D46E7" />
-<link rel="apple-touch-icon" sizes="180x180" href={appleTouchIcon.src} />
+<link rel="shortcut icon" href={BASE_PATHNAME + 'favicon.ico'} />
+<link rel="icon" type="image/svg+xml" href={BASE_PATHNAME + 'favicon.svg'} />
+<link rel="apple-touch-icon" sizes="180x180" href={BASE_PATHNAME + 'apple-touch-icon.png'} />
