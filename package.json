@@ -20,6 +20,17 @@
     "tailwind.config.d.ts"
   ],
   "types": "vendor/integration/types.d.ts",
+  "exports": {
+    "./assets/*": "./src/assets/*",
+    "./pages/*": "./src/pages/*",
+    "./layouts/*": "./src/layouts/*",
+    "./components/*": "./src/components/*",
+    "./utils/*": "./src/utils/*",
+    "./types": "./src/types.d.ts",
+    "./content": "./src/content/config.ts",
+    "./tailwind/config.js": "./tailwind.config.js",
+    ".": "./vendor/integration/index.ts"
+  },
   "imports": {
     "#astrowind:config": "./vendor/integration/types.d.ts"
   },
