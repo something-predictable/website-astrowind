@@ -1,9 +1,9 @@
 import type { PaginateFunction } from 'astro';
 import { getCollection, render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
-import type { Post } from '../types';
+import type { Post, Taxonomy } from '../types';
 import { APP_BLOG } from '#astrowind:config';
-import { cleanSlug, trimSlash, BLOG_BASE, POST_PERMALINK_PATTERN, CATEGORY_BASE, TAG_BASE } from './permalinks';
+import { BLOG_BASE, CATEGORY_BASE, cleanSlug, POST_PERMALINK_PATTERN, TAG_BASE, trimSlash } from './permalinks';
 
 const generatePermalink = async ({
   id,
@@ -198,10 +198,11 @@ export const getStaticPathsBlogCategory = async ({ paginate }: { paginate: Pagin
   if (!isBlogEnabled || !isBlogCategoryRouteEnabled) return [];
 
   const posts = await fetchPosts();
-  const categories = {};
+  const categories: Record<string, Taxonomy> = {};
   posts.map((post) => {
-    if (post.category?.slug) {
-      categories[post.category?.slug] = post.category;
+    const category = post.category;
+    if (category) {
+      categories[category.slug] = category;
     }
   });
 
@@ -211,7 +212,7 @@ export const getStaticPathsBlogCategory = async ({ paginate }: { paginate: Pagin
       {
         params: { category: categorySlug, blog: CATEGORY_BASE || undefined },
         pageSize: blogPostsPerPage,
-        props: { category: categories[categorySlug] },
+        props: { category: categories[categorySlug]! },
       }
     )
   );
@@ -222,11 +223,13 @@ export const getStaticPathsBlogTag = async ({ paginate }: { paginate: PaginateFu
   if (!isBlogEnabled || !isBlogTagRouteEnabled) return [];
 
   const posts = await fetchPosts();
-  const tags = {};
+  const tags: Record<string, Taxonomy> = {};
   posts.map((post) => {
     if (Array.isArray(post.tags)) {
       post.tags.map((tag) => {
-        tags[tag?.slug] = tag;
+        if (tag) {
+          tags[tag.slug] = tag;
+        }
       });
     }
   });
@@ -237,7 +240,7 @@ export const getStaticPathsBlogTag = async ({ paginate }: { paginate: PaginateFu
       {
         params: { tag: tagSlug, blog: TAG_BASE || undefined },
         pageSize: blogPostsPerPage,
-        props: { tag: tags[tagSlug] },
+        props: { tag: tags[tagSlug]! },
       }
     )
   );
@@ -271,10 +274,11 @@ export async function getRelatedPosts(originalPost: Post, maxResults: number = 4
   postsWithScores.sort((a, b) => b.score - a.score);
 
   const selectedPosts: Post[] = [];
-  let i = 0;
-  while (selectedPosts.length < maxResults && i < postsWithScores.length) {
-    selectedPosts.push(postsWithScores[i].post);
-    i++;
+  for (const { post } of postsWithScores) {
+    selectedPosts.push(post);
+    if (selectedPosts.length === maxResults) {
+      break;
+    }
   }
 
   return selectedPosts;

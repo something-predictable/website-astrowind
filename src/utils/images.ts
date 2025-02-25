@@ -22,9 +22,7 @@ export const fetchLocalImages = async () => {
 };
 
 /** */
-export const findImage = async (
-  imagePath?: string | ImageMetadata | null
-): Promise<string | ImageMetadata | undefined | null> => {
+export const findImage = async (imagePath?: string | ImageMetadata): Promise<string | ImageMetadata | undefined> => {
   // Not string
   if (typeof imagePath !== 'string') {
     return imagePath;
@@ -45,7 +43,7 @@ export const findImage = async (
 
   return images && typeof images[key] === 'function'
     ? ((await images[key]()) as { default: ImageMetadata })['default']
-    : null;
+    : undefined;
 };
 
 /** */
@@ -64,7 +62,7 @@ export const adaptOpenGraphImages = async (
   const adaptedImages = await Promise.all(
     images.map(async (image) => {
       if (image?.url) {
-        const resolvedImage = (await findImage(image.url)) as ImageMetadata | string | undefined;
+        const resolvedImage = await findImage(image.url);
         if (!resolvedImage) {
           return {
             url: '',
