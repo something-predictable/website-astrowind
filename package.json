@@ -17,7 +17,8 @@
     "src/content/config.ts",
     "vendor/integration/**/*.ts",
     "tailwind.config.js",
-    "tailwind.config.d.ts"
+    "tailwind.config.d.ts",
+    "config-schema.json"
   ],
   "types": "vendor/integration/types.d.ts",
   "exports": {
