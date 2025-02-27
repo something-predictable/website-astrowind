@@ -7,8 +7,19 @@
     "paths": {
       "~/*": ["src/*"],
       "#astrowind:config": ["./node_modules/@riddance/astrowind/vendor/integration/types.d.ts"]
-    }
+    },
+    "strict": true,
+    "alwaysStrict": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
   },
-  "include": [".astro/types.d.ts", "**/*"],
+  "include": [".astro/types.d.ts", ".prettierrc.cjs", "**/*"],
   "exclude": ["dist/"]
 }

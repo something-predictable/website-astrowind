@@ -1,34 +1,34 @@
 ---
-import type { InferGetStaticPropsType, GetStaticPaths } from 'astro';
+import type { GetStaticPaths, InferGetStaticPropsType } from 'astro'
 
-import Layout from '@riddance/astrowind/layouts/PageLayout.astro';
-import BlogList from '@riddance/astrowind/components/blog/List.astro';
-import Headline from '@riddance/astrowind/components/blog/Headline.astro';
-import Pagination from '@riddance/astrowind/components/blog/Pagination.astro';
+import Headline from '@riddance/astrowind/components/blog/Headline.astro'
+import BlogList from '@riddance/astrowind/components/blog/List.astro'
+import Pagination from '@riddance/astrowind/components/blog/Pagination.astro'
+import Layout from '@riddance/astrowind/layouts/PageLayout.astro'
 
-import { blogListRobots, getStaticPathsBlogList } from '@riddance/astrowind/utils/blog.ts';
+import { blogListRobots, getStaticPathsBlogList } from '@riddance/astrowind/utils/blog.ts'
 
-export const prerender = true;
+export const prerender = true
 
 export const getStaticPaths = (async ({ paginate }) => {
-  return await getStaticPathsBlogList({ paginate });
-}) satisfies GetStaticPaths;
+  return await getStaticPathsBlogList({ paginate })
+}) satisfies GetStaticPaths
 
-type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+type Props = InferGetStaticPropsType<typeof getStaticPaths>
 
-const { page } = Astro.props as Props;
-const currentPage = page.currentPage ?? 1;
+const { page } = Astro.props
+const { currentPage } = page
 
 const metadata = {
   title: `Blog${currentPage > 1 ? ` — Page ${currentPage}` : ''}`,
   robots: {
-    index: blogListRobots?.index && currentPage === 1,
-    follow: blogListRobots?.follow,
+    index: blogListRobots.index && currentPage === 1,
+    follow: blogListRobots.follow,
   },
   openGraph: {
     type: 'blog',
   },
-};
+}
 ---
 
 <Layout metadata={metadata}>

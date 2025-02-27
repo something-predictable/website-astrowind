@@ -1,0 +1,13 @@
+{
+  "version": "0.2",
+  "files": ["**/*.ts", "**/*.astro", "**/*.md", "**/*.mdx", "**/*.html", "package.json"],
+  "ignorePaths": ["dist", "node_modules"],
+  "words": ["camelcase", "tabler", "iconify", "astrowind"],
+  "dictionaries": ["project"],
+  "dictionaryDefinitions": [
+    {
+      "name": "project",
+      "path": "./dictionary.txt"
+    }
+  ]
+}

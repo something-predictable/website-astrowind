@@ -1,30 +1,60 @@
 {
+  "files.eol": "\n",
   "files.exclude": {
-    ".vscode": true,
-    ".astro": true,
-    "dist": true,
-    "node_modules": true,
-    ".*": true,
-    "package-lock.json": true,
+    "template/": true,
+    "LICENSE": true,
+    ".gitignore": true,
+    ".gitattributes": true,
+    ".editorconfig": true,
+    "cspell.json": true,
     "tsconfig.json": true,
-    "eslint.config.js": true,
+    "node_modules/": true,
+    "package-lock.json": true,
+    "dictionary.txt": true,
+    ".vscode/": true,
+    ".devcontainer/": true,
+    ".idea/": true,
+    "eslint.config.mjs": true,
+    ".prettierrc.cjs": true,
+    ".mocharc.json": true,
+    ".timestamps.json": true,
+    "Dockerfile.integration": true,
+    "**/*.js": true,
+    "**/*.d.ts": true,
     "vscode.tailwind.json": true,
-    "LICENSE.md": true
+    ".astro": true,
+    "dist": true
+  },
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.preferences.importModuleSpecifierEnding": "js",
+  "typescript.preferences.preferTypeOnlyAutoImports": true,
+  "typescript.format.semicolons": "remove",
+  "typescript.preferences.quoteStyle": "single",
+  "typescript.implementationsCodeLens.enabled": true,
+  "typescript.referencesCodeLens.enabled": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+  },
+  "eslint.format.enable": false,
+  "eslint.useFlatConfig": true,
+  "cSpell.customDictionaries": {
+    "project": {
+      "name": "project dictionary",
+      "path": "${workspaceRoot}/dictionary.txt",
+      "description": "Words used in this project",
+      "addWords": true
+    }
   },
   "css.customData": ["./vscode.tailwind.json"],
-  "eslint.validate": ["javascript", "javascriptreact", "astro", "typescript", "typescriptreact"],
   "files.associations": {
     "*.mdx": "markdown"
   },
-  "prettier.documentSelectors": ["**/*.astro"],
-  "[astro]": {
-    "editor.defaultFormatter": "astro-build.astro-vscode"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
+  "eslint.validate": ["javascript", "javascriptreact", "astro", "typescript", "typescriptreact"],
   "yaml.schemas": {
-    "./.vscode/astrowind/config-schema.json": "/src/config.yaml"
-  },
-  "eslint.useFlatConfig": true
+    "./node_modules/@riddance/astrowind/config-schema.json": "/src/config.yaml"
+  }
 }

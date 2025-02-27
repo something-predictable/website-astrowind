@@ -1,13 +1,13 @@
 ---
-import Layout from '@riddance/astrowind/layouts/PageLayout.astro';
-import Header from '@riddance/astrowind/components/widgets/Header.astro';
-import Hero from '@riddance/astrowind/components/widgets/Hero.astro';
-import CallToAction from '@riddance/astrowind/components/widgets/CallToAction.astro';
-import { SITE, METADATA } from '#astrowind:config';
+import Layout from '@riddance/astrowind/layouts/PageLayout.astro'
+import Header from '@riddance/astrowind/components/widgets/Header.astro'
+import Hero from '@riddance/astrowind/components/widgets/Hero.astro'
+import CallToAction from '@riddance/astrowind/components/widgets/CallToAction.astro'
+import { SITE, METADATA } from '#astrowind:config'
 
 const metadata = {
   title: SITE.name,
-};
+}
 ---
 
 <Layout metadata={metadata}>
@@ -15,7 +15,11 @@ const metadata = {
     <Header isSticky showToggleTheme />
   </Fragment>
 
-  <Hero id="hero" title={SITE.name} actions={[{ variant: 'primary', text: 'Contact', href: '#contact' }]}>
+  <Hero
+    id="hero"
+    title={SITE.name}
+    actions={[{ variant: 'primary', text: 'Contact', href: '#contact' }]}
+  >
     <Fragment slot="subtitle">{METADATA.description}</Fragment>
   </Hero>
 

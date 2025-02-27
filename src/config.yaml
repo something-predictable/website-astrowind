@@ -8,7 +8,7 @@ metadata:
   title:
     default: Project Name
     template: '%s — Project Name'
-  description: "Project Name description."
+  description: 'Project Name description.'
   robots:
     index: true
     follow: true
